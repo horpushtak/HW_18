@@ -13,7 +13,7 @@ class DirectorsView(Resource):
         return self.schema.dump(director_service.get()), 200
 
 
-@directors_ns.route('/<did:int>')
+@directors_ns.route('/<int:did>')
 class DirectorView(Resource):
     schema = DirectorSchema()
 

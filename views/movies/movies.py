@@ -20,7 +20,7 @@ class MoviesView(Resource):
         return "", 201, {'location': f'{movie_ns.path}/{new_movie}'}  # Так, что это вообще такое
 
 
-@movie_ns.route('/movies/<int:mid>')
+@movie_ns.route('/<int:mid>')
 class MoviesView(Resource):
     schema = MovieSchema()
 
@@ -34,5 +34,5 @@ class MoviesView(Resource):
         return self.schema.dump(movie_service.full_update(mid, request.json)), 200
 
     def delete(self, mid: int):
-        movie_service.delete(mid)
+        movie_service.delete_movie(mid)
         return "", 204
